@@ -61,7 +61,7 @@ readonly LOGVIEWERS=(
 # **************************************************************************
 
 [[ -d /mingw ]] && {
-	die "please remove \"/mingw\" directory. terminate."
+	echo "please remove \"/mingw\" directory. terminate."
 }
 
 [[ -n $(which "gcc.exe" 2>/dev/null) || \

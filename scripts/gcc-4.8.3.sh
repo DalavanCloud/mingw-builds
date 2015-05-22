@@ -44,6 +44,7 @@ PKG_URLS=(
 )
 
 PKG_PRIORITY=main
+MINGW_W64_PKG_STRING='built by strawberryperl.com project'
 
 #
 
@@ -58,6 +59,7 @@ PKG_PATCHES=(
 	gcc/gcc-4.8.2-dont-escape-arguments-that-dont-need-it-in-pex-win32.c.patch
 	gcc/gcc-4.8.2-fix-for-windows-not-minding-non-existant-parent-dirs.patch
 	gcc/gcc-4.8.2-windows-lrealpath-no-force-lowercase-nor-backslash.patch
+	gcc/relocate.patch
 )
 
 #
@@ -68,7 +70,7 @@ PKG_CONFIGURE_FLAGS=(
 	--target=$TARGET
 	#
 	--prefix=$MINGWPREFIX
-	--with-sysroot=$PREFIX
+	###--with-sysroot=$PREFIX
 	--with-gxx-include-dir=$MINGWPREFIX/$TARGET/include/c++
 	#
 	$LINK_TYPE_GCC
@@ -118,7 +120,7 @@ PKG_CONFIGURE_FLAGS=(
 	--with-{gmp,mpfr,mpc,isl,cloog}=$PREREQ_DIR/$HOST-$LINK_TYPE_SUFFIX
 	--enable-cloog-backend=isl
 	--with-pkgversion="\"$BUILD_ARCHITECTURE-$THREADS_MODEL-$EXCEPTIONS_MODEL${REV_STRING}, $MINGW_W64_PKG_STRING\""
-	--with-bugurl=$BUG_URL
+	###--with-bugurl=$BUG_URL
 	#
 	CFLAGS="\"$COMMON_CFLAGS\""
 	CXXFLAGS="\"$COMMON_CXXFLAGS\""

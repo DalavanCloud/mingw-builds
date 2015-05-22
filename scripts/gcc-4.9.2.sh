@@ -44,6 +44,7 @@ PKG_URLS=(
 )
 
 PKG_PRIORITY=main
+MINGW_W64_PKG_STRING='built by strawberryperl.com project'
 
 #
 
@@ -59,6 +60,7 @@ PKG_PATCHES=(
 	gcc/gcc-4.9.0-pr-57440.patch
 	gcc/gcc-4.8-filename-output.patch
 	gcc/ktietz-libgomp.patch
+	gcc/relocate.patch
 )
 
 #
@@ -69,7 +71,7 @@ PKG_CONFIGURE_FLAGS=(
 	--target=$TARGET
 	#
 	--prefix=$MINGWPREFIX
-	--with-sysroot=$PREFIX
+	###XXX--with-sysroot=$PREFIX
 	--with-gxx-include-dir=$MINGWPREFIX/$TARGET/include/c++
 	#
 	$LINK_TYPE_GCC
@@ -120,7 +122,7 @@ PKG_CONFIGURE_FLAGS=(
 	--with-{gmp,mpfr,mpc,isl,cloog}=$PREREQ_DIR/$HOST-$LINK_TYPE_SUFFIX
 	--enable-cloog-backend=isl
 	--with-pkgversion="\"$BUILD_ARCHITECTURE-$THREADS_MODEL-$EXCEPTIONS_MODEL${REV_STRING}, $MINGW_W64_PKG_STRING\""
-	--with-bugurl=$BUG_URL
+	###--with-bugurl=$BUG_URL
 	#
 	CFLAGS="\"$COMMON_CFLAGS\""
 	CXXFLAGS="\"$COMMON_CXXFLAGS\""
